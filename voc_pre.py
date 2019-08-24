@@ -1,5 +1,5 @@
 
-
+import os
 def read_dataset(directory_path):
     """
     VOC Dataset 파일을 적절한 폴더에 옮긴 뒤 python으로 import하는 함수입니다.
@@ -12,7 +12,12 @@ def read_dataset(directory_path):
     ###############################################################
     #                              1번                            #
     ###############################################################
-    pass
+    file_list = os.listdir(directory_path)
+    file_dict = {}
+    for i in file_list:
+        key = i[2:6]  #파일명의 마지막 4자리수를 key로 사용
+        file_dict[key] = read_image(directory_path + '/' + i)
+    return file_dict
     ###############################################################
 
 
